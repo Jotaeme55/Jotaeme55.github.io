@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>José Tabares Rodríguez - software engineer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body style="height: 100% !important;">
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-md-6">
+                <div id="retrato" class="retrato">
+                    <img id="image" class="image" src="yoEditado.png" alt="este soy yo ;)">
+                    <div class="text">
+                        <p>Hey, click me!!</p>
+                    </div>
+                </div>       
+            </div>
+            <div class="col-md-6">
+                <div class="title" >
+                    <h1>Hola, Soy José Tabares &#128526;</h1>
+                </div>
+                <div class="texto">
+                    <p>
+                        I'm a software engineer with a passion for scalable architectures and emerging technologies currently working on back-end stuff at Revolut.
+                        <br>
+                        <br>
+                        I love to work on problems with my coworkers, always thinking our contributions can have a meaning for other people. Outside of work, you're likely to find me reading books, playing video games, or doing exercise.
+                        <br>
+                        <br>
+                        I really enjoy meeting new people, to talk about technology, both to learn and share knowledge. Don't hesitate to reach me out on any of my media!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+    var retrato=document.getElementById("retrato")
+    retrato.addEventListener("click",()=>{
+        window.location="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    })
+
+</script>
+<style>
+    .retrato{
+        margin-top: 9em;
+        align-items: center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .text{
+        font-size: xx-large;
+        color: white;
+        visibility: hidden;
+        position: absolute;
+        bottom: 40%;
+    }
+
+    .image{
+        border-radius: 500px;
+        width: 80%;
+        box-shadow: 0 0 5px 0 rgb(2, 0, 0, .75);
+        object-fit: cover ;
+        -webkit-transition:all 0.30s ease-in-out;
+		-moz-transition:all 0.30s ease-in-out;
+		-o-transition:all 0.30s ease-in-out;
+		-ms-transition:all 0.30s ease-in-out;
+		transition:all 0.30s ease-in-out;
+    }
+
+    .retrato:hover >.image{
+        filter: blur(3px) brightness(10%);
+        background-color: black;
+		transform: scale(1.07,1.07);
+		-webkit-transform:scale(1.07,1.07);
+		-moz-transform:scale(1.07,1.07);
+		-ms-transform:scale(1.07,1.07);
+		-o-transform:scale(1.07,1.07);
+    }
+
+    .retrato:hover > .text{
+        visibility: visible;
+    }
+
+    .title{
+        margin-top: 12em;
+        margin-bottom: 2em;
+        text-align: center;
+    }
+
+</style>
