@@ -1,7 +1,7 @@
 <template>
 
     <div class="galeria">
-        <h1>My skills</h1>
+        <h1>{{ translate('mySkills') }}</h1>
         <div class="linea"></div>
         <div class="contenedor-imagenes">
             <div class="imagen" @click="displayDialog('python')">
@@ -22,19 +22,18 @@
                     <p>VUE</p>
                 </div>
             </div>
-            <div class="imagen" v-on:click="displayDialog('tf')">
-                <img src="images/tensorflow logo.png" alt="">
-                <div class="text">
-                    <p>TENSORFLOW</p>
-                </div>
-            </div>
-            <div class="imagen" v-on:click="displayDialog('sk')">
+            <div class="imagen" v-on:click="displayDialog('ai')">
                 <img src="images/scikitlearn_logo.png" alt="">
                 <div class="text">
-                    <p>SCIKIT LEARN</p>
+                    <p>AI TOOLS</p>
                 </div>
             </div>
-            
+            <div class="imagen" v-on:click="displayDialog('others')">
+                <img src="images/otros.png" alt="">
+                <div class="text">
+                    <p>OTHERS</p>
+                </div>
+            </div>
             <div class="imagen" v-on:click="displayDialog('java')">
                 <img src="images/java_logo.png" alt="">
                 <div class="text">
@@ -43,25 +42,32 @@
             </div>
         </div>
         <Dialog v-model:visible="displayBasic" :breakpoints="{'960px': '75vw', '640px': '90vw'}" :style="{width: '50vw'}">
-            <p style="font-size:2rem; text-align: center;">{{contentactual}}</p>
+            <p v-for="content in contentactual.split('\r\r\n\n')" v-bind:key=content style="font-size:1rem; text-align: left;">
+                {{content}}
+            </p>
         </Dialog>
     </div>
 
 </template>
 
 <script>
-
+import es from "../es.js";
+import en from "../en.js"
 export default {
+    mixins:[ en, es],
 	data() {
         return {
             contentactual:"actual",
-            contentPython:"hola",
-            contentjs:"holajs",
-            contentvue:"holavue",
-            contenttf:"holatf",
             contentsl:"holascikit",
             contentjava:"java",
             displayBasic:false,
+            projectactual:"",
+            projectpython:`https://github.com/Jotaeme55/decide\r\r\n\n`,
+            projectjs:``,
+            projectvue:``,
+            projectai:``,
+            projectotros:`https://github.com/fernando-hidalgo/IISSI-2-Optica-Maguilla\r\r\n\n`,
+            projectjava:``,
         }
     },
     created() {
@@ -71,22 +77,25 @@ export default {
 		
     },
     methods: {
+        translate(prop){
+                return this[this.$store.state.language][prop]
+            },
         displayDialog(str){
             if(this.displayBasic==true){
                 this.displayBasic=false  
             }else{
                 if(str == "python"){
-                    this.contentactual = this.contentPython;
+                    this.contentactual = this.translate('contentPython');
                 }else if(str == "js"){
-                    this.contentactual = this.contentjs;
+                    this.contentactual = this.translate('contentjs');
                 }else if(str == "vue"){
-                    this.contentactual = this.contentvue;
-                }else if(str == "tf"){
-                    this.contentactual = this.contenttf;
-                }else if(str == "sk"){
-                    this.contentactual = this.contentsl;
+                    this.contentactual = this.translate('contentvue');
+                }else if(str == "ai"){
+                    this.contentactual = this.translate('contentai');
+                }else if(str == "others"){
+                    this.contentactual = this.translate('contentothers');
                 }else if(str == "java"){
-                    this.contentactual = this.contentjava;
+                    this.contentactual = this.translate('contentjava');
                 }else{
                     this.contentactual = "error";
                 }
@@ -130,6 +139,7 @@ export default {
         height: 250px;
         margin-bottom: 15px !important;
         box-shadow: 0 0 5px 0 rgb(255, 255, 255, .75);
+        cursor: pointer;
         
     }
 
@@ -166,7 +176,7 @@ export default {
     }
 
     .dialog-content p{
-        font-size: 2rem;
+        font-size: 1rem;
     }
 
     .imagen:hover img{

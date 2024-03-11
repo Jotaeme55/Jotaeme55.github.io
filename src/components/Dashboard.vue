@@ -4,28 +4,28 @@
             <div id="retrato" class="retrato" @click="throwConfetti()">
                 <img id="image" class="image" src="images/yoEditado.png" alt="este soy yo ;)">
                 <div class="clickme">
-                    <p>Hey, click me!!</p>
+                    <p>{{ translate("clickMe") }}</p>
                 </div>
             </div>       
         </div>
         <div class="col-12 lg:col-6">
             <div class="title" >
-                    <h1>Hello, I am José Tabares &#128526;</h1>
+                    <h1>{{ translate("welcomeMsg") }} &#128526;</h1>
             </div>
             <div class="contenido">
                 <p>
-                    I'm a software engineer with a passion for scalable architectures and emerging technologies currently working on back-end stuff at Revolut.
+                    {{ translate("cuerpoFirstMessage") }}
                     <br>
                     <br>
-                    I love to work on problems with my coworkers, always thinking our contributions can have a meaning for other people. Outside of work, you're likely to find me reading books, playing video games, or doing exercise.
+                    {{ translate("cuerpoSecondMessage") }}
                     <br>
                     <br>
-                    I really enjoy meeting new people, to talk about technology, both to learn and share knowledge. Don't hesitate to reach me out on any of my media!
+                    {{ translate("cuerpoThirdMessage") }}
                 </p>
             </div>
             <div class="tecnologias">
                 <router-link to="/mySkills">
-                    <Button label="My Skills" class="botontech p-button p-component p-button-raised p-button-lg" />
+                    <Button :label="translate('mySkills')" class="botontech p-button p-component p-button-raised p-button-lg" />
                 </router-link>
             </div>
         </div>
@@ -34,7 +34,10 @@
 
 <script>
 import confetti from 'canvas-confetti';
+import es from "../es.js";
+import en from "../en.js"
 	export default {
+        mixins:[ en, es],
 		name: "Dashboard",
 		methods: {
 			throwConfetti(){
@@ -47,6 +50,9 @@ import confetti from 'canvas-confetti';
                         y: Math.random() - 0.2
                     }
                     });
+            },
+            translate(prop){
+                return this[this.$store.state.language][prop]
             }
 		},
 		computed: {

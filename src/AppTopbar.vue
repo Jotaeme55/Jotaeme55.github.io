@@ -8,6 +8,9 @@
         </div>
 
         <ul class="layout-topbar-menu hidden lg:flex origin-top  justify-content-left">
+            <li v-tooltip.bottom="translate('cambiaIdioma')" style="cursor: pointer;" class="mt-3 ml-8" @click="changeLanguage()">
+                <img  style="width:40px; height: 30px;" alt="Logo" :src="languageImage()"/>
+            </li>
             <li class="mt-3 ml-8">
                 <a href="./resume.pdf" target="_self">
                     <i class="icons pi pi-file"></i>
@@ -39,7 +42,10 @@
         </div>
     
         <Sidebar v-model:visible="visibleLeft" :baseZIndex="1000">
-            <div style="display:block; align-items: center;">
+            <div class="items-sidebar" >
+                <div class="language-sidebar" v-tooltip.bottom="translate('cambiaIdioma')" style="cursor: pointer;" @click="changeLanguage()">
+                    <img  style="width:100px; height: 70px;" alt="Logo" :src="languageImage()"/>
+                </div>
                 <a href="./resume.pdf" target="_self">
                     <i class="iconssidebar pi pi-file"></i> &nbsp;
                 </a>
@@ -59,12 +65,18 @@
 
 
 <script>
+import es from "./es.js";
+import en from "./en.js"
 export default {
+    mixins:[ en, es],
     data() {
+        
         return {
+            
             visibleLeft:false,
             displayConfirmation: false,
             overlayMenuItems: [],
+            language:this.$store.state.language,
         }
     },
     mounted(){
@@ -77,9 +89,22 @@ export default {
         }
     },
     methods: {
-        topbarImage() {
-            return '/images/Logo_ISPP.png';
-        },   
+        translate(prop){
+                return this[this.$store.state.language][prop]
+            },
+        changeLanguage(){
+            if(this.language==="en"){
+                this.$store.dispatch("saveLanguage", "es");
+                this.language="es"
+            }else{
+                this.$store.dispatch("saveLanguage", "en");
+                this.language="en"
+            }
+            
+        },
+        languageImage() {
+			return this.language==="en" ? 'images/ingles.gif' : 'images/españa.gif';
+		},   
         toggleMenu(event) {
             this.$refs.menu.toggle(event);
         },
@@ -99,10 +124,16 @@ export default {
 }
 </script>
 <style>
+    .items-sidebar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     .iconssidebar{
-        margin-left: 20%;
         margin-top: 30px;
-        font-size: 9rem;
+        font-size: 7rem;
         color:white;
     }
 

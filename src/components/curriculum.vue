@@ -1,6 +1,6 @@
 <template>
     <div>
-        <pdf src="/curriculum.pdf"></pdf>
+        <pdf src="/resume.pdf"></pdf>
     </div>
     
 </template>
