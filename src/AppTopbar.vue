@@ -1,14 +1,16 @@
 <template>
     <div class="layout-topbar">
         <div>
-            <router-link to="/" class="layout-topbar-logo mr-0">
-                <span style="color:white; margin-right: 3px;">José Tabares </span>
-                <i class="icons pi pi-moon"></i>
+            <router-link to="/" >
+                <div class="div-logo">
+                    <img class="img-logo" src="images/Logo.png" alt="logo">
+                </div>
+                
             </router-link>
         </div>
 
         <ul class="layout-topbar-menu hidden lg:flex origin-top  justify-content-left">
-            <li v-tooltip.bottom="translate('cambiaIdioma')" style="cursor: pointer;" class="mt-3 ml-8" @click="changeLanguage()">
+            <li style="cursor: pointer;" class="mt-3 ml-8" @click="changeLanguage()">
                 <img  style="width:40px; height: 30px;" alt="Logo" :src="languageImage()"/>
             </li>
             <li class="mt-3 ml-8">
@@ -41,7 +43,7 @@
             </button>
         </div>
     
-        <Sidebar v-model:visible="visibleLeft" :baseZIndex="1000">
+        <Sidebar class="sidebar" v-model:visible="visibleLeft" :baseZIndex="1000">
             <div class="items-sidebar" >
                 <div class="language-sidebar" v-tooltip.bottom="translate('cambiaIdioma')" style="cursor: pointer;" @click="changeLanguage()">
                     <img  style="width:100px; height: 70px;" alt="Logo" :src="languageImage()"/>
@@ -124,6 +126,29 @@ export default {
 }
 </script>
 <style>
+
+    .div-logo{
+        width: 4rem;
+        height: 4rem;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        transition: transform 0.3s ease; /* Suaviza la transición */
+    }
+
+    .div-logo:hover {
+        transform: scale(1.2); /* Agranda el div en 1.4 veces */
+    }
+
+    
+  .div-logo .img-logo {
+
+        max-width: 100%;
+        height: auto;
+    }
+
     .items-sidebar{
         display: flex;
         flex-direction: column;
@@ -168,6 +193,12 @@ export default {
     span.color:hover{
         color:black;
     }
+
+    .sidebar{
+        background: linear-gradient(to left, rgb(0, 255, 207), #11012E);
+    }
+
+
     .p-sidebar-left {
         background-color:#11012E ;
     }

@@ -8,6 +8,8 @@
     width: 100%;
     padding: 0 2rem;
     background-color: #11012E;
+    background: linear-gradient(to left, rgb(0, 255, 207), #11012E);
+    // rgb(0, 255, 207)
     transition: left $transitionDuration;
     display: flex;
     align-items: center;
