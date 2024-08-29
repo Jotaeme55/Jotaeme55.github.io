@@ -19,7 +19,7 @@ SQL:\r*Diseño e implementación de bases de datos relacionales para proyectos a
                 titleMyskills:`Conóceme un poco mas!`,
                 contentSkills:`Hey, soy yo, si quieres saber un poco más de mi, pincha en las tecnologías de la pared`,
                 leftSideContent:"Uso y programo IA",
-                rigthSideContent:"Disfruto el desarrollo web al máximo",
+                rightSideContent:"Disfruto el desarrollo web al máximo",
                 ADeveloper:"UN DESARROLLADOR",
                 IAmJoseTabares:"SOY TABARES",
                 adjustableText:"¡Bienvenidos a mi página! Soy José, tengo alrededor de 3 años como programador. Si quieren conocerme más, hagan clic justo arriba, en mi lado creativo."

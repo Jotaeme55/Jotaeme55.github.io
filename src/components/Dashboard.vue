@@ -210,7 +210,6 @@ export default {
     display: none;
 }
 .description-right{
-    color: white;
     display: none;
 }
 
@@ -220,7 +219,9 @@ export default {
 }
 
 .split-right:hover .description-right{
+    color: white;
     display: block;
+    z-index: 5;
 }
 
 .split-left:hover .img-dashboard {

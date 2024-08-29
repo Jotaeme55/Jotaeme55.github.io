@@ -18,7 +18,7 @@ export default{
                 titleMyskills:`Get to Know Me: Let's Explore Together!`,
                 contentSkills:`Hey, It's me, if you want to get to know me, just click in the technologies in the wall!`,
                 leftSideContent:"I use and program AI",
-                rigthSideContent:"I enjoy the web development",
+                rightSideContent:"I enjoy the web development",
                 ADeveloper:"A DEVELOPER",
                 IAmJoseTabares:"I AM J.T.",
                 adjustableText:"Welcome to my page! I'm José, and I have around 3 years of experience as a programmer. If you'd like to know more about me, click just above on my creative side."
